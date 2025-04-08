@@ -1,0 +1,83 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ff66b2;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+button {
+    background-color: #ff66b2;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    margin: 15px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #ff3385;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button i {
+    margin-right: 10px;
+}
+
+body::before {
+    content: '✨';
+    font-size: 100px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: sparkle 1.5s infinite alternate;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+button.cambio {
+    background-color: #ffbb33;
+}
+
+button.cambio:hover {
+    background-color: #ff9933;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 102, 178, 0.4);
+}

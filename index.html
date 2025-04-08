@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Logs Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <script src="https://cdn.lrkt-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
+    <script>window.LogRocket && window.LogRocket.init('hgq2ep/jincito');</script>
+</head>
+
+<body>
+    <h1>Bienvenido a la página de ejemplo de Logs</h1>
+    <button onclick="logMessage('CLICK CLICK')">
+        <i class="fas fa-paw"></i> Haz clic aquí
+    </button>
+    <button class="cambio" onclick="identifyUser('Michelle', 'Michelle', 'michelle@gmail.com')">
+        <i class="fas fa-user-alt"></i> Cambiar a Michelle
+    </button>
+    <button class="cambio" onclick="identifyUser('Sitlali', 'Sitlali', 'sitlali@gmail.com')">
+        <i class="fas fa-user-alt"></i> Cambiar a Sitlali
+    </button>
+
+    <script>
+            //Integración de LogRocket
+        if (typeof LogRocket !== 'undefined') {
+            LogRocket.init('hgq2ep/jincito');//AQUI PON TU ID
+        } else {
+            console.error('LogRocket no se ha cargado correctamente');
+        }
+    //Permite identificar al usuario en LogRocket, lo que es útil para rastrear acciones específicas de cada usuario.
+        function identifyUser(id, name, email) {
+            if (typeof LogRocket !== 'undefined') {
+                LogRocket.identify(id, { name, email });
+                console.log(`Usuario cambiado a: ${name}`);
+            }
+        }
+    //Registra mensajes en la consola, en LogRocket y los envía a un servidor (log.php).
+        function logMessage(message) {
+            console.log(message);
+            if (typeof LogRocket !== 'undefined') {
+                LogRocket.log(message);
+            }
+            fetch('log.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+        }
+    </script>
+</body>
+
+
+</html>
